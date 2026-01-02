@@ -7,7 +7,7 @@ This is a Python FastAPI application for Mergington High School's extracurricula
 ## Development Setup
 
 ### Prerequisites
-- Python 3.x
+- Python 3.8 or higher
 - pip (Python package manager)
 
 ### Installation
