@@ -280,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Helper function to escape HTML for safe attribute usage
   function escapeHtml(text) {
+    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
