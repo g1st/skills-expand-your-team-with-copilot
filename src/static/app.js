@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
 
+  // Dark mode elements
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const darkModeIcon = darkModeToggle.querySelector(".icon");
+  const darkModeText = darkModeToggle.querySelector("span:last-child");
+
   // Activity categories with corresponding colors
   const activityTypes = {
     sports: { label: "Sports", color: "#e8f5e9", textColor: "#2e7d32" },
@@ -44,12 +49,54 @@ document.addEventListener("DOMContentLoaded", () => {
   // Authentication state
   let currentUser = null;
 
+  // Dark mode state
+  let isDarkMode = false;
+
   // Time range mappings for the dropdown
   const timeRanges = {
     morning: { start: "06:00", end: "08:00" }, // Before school hours
     afternoon: { start: "15:00", end: "18:00" }, // After school hours
     weekend: { days: ["Saturday", "Sunday"] }, // Weekend days
   };
+
+  // Initialize dark mode from localStorage
+  function initializeDarkMode() {
+    const savedDarkMode = localStorage.getItem("darkMode");
+    if (savedDarkMode === "true") {
+      isDarkMode = true;
+      document.body.classList.add("dark-mode");
+      updateDarkModeButton();
+    }
+  }
+
+  // Toggle dark mode
+  function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+    
+    // Save preference to localStorage
+    localStorage.setItem("darkMode", isDarkMode);
+    updateDarkModeButton();
+  }
+
+  // Update dark mode button appearance
+  function updateDarkModeButton() {
+    if (isDarkMode) {
+      darkModeIcon.textContent = "☀️";
+      darkModeText.textContent = "Light Mode";
+    } else {
+      darkModeIcon.textContent = "🌙";
+      darkModeText.textContent = "Dark Mode";
+    }
+  }
+
+  // Event listener for dark mode toggle
+  darkModeToggle.addEventListener("click", toggleDarkMode);
 
   // Initialize filters from active elements
   function initializeFilters() {
@@ -862,6 +909,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Initialize app
+  initializeDarkMode();
   checkAuthentication();
   initializeFilters();
   fetchActivities();
