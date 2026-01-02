@@ -165,7 +165,7 @@ initial_activities = {
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
     },
     "Manga Club": {
-        "description": "Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).",
+        "description": "Unleash your inner hero! Dive into epic adventures, supernatural battles, and heartwarming friendships through Japanese manga. Whether you're into shonen action, shojo romance, or mind-bending seinen stories, join fellow otaku to discuss, share, and discover amazing manga worlds!",
         "schedule": "Tuesdays, 7:00 PM - 8:00 PM",
         "schedule_details": {
             "days": ["Tuesday"],
